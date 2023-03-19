@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mystyle.css') }}">
+    <link rel="stylesheet" href="https://kit.fontawesome.com/f2e32cf60e.css" crossorigin="anonymous">
+    <title>Meet You</title>
+</head>
+
+<body> 
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="padding: 20px;">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPD1eWpEX6hwD0luSjqnzp9TK-v_VqdwP8WQ&usqp=CAU" class="navbar-brand" width="60"
+      height="60" >Hello You!</img>
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="/dashboard">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/posts/{{user.id}}/mymeet">MyMeets</a>
+        </li>
+        <li class="nav-item form-inline" style="margin-left: 200px;"  >
+          <i class="fa-solid fa-earth-americas"></i>
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">MeetYou</a>
+        </li>
+      </ul>
+      <div class="form-inline my-2 my-lg-0">
+        <a class="nav-link disabled">{{user.first_name}}&nbsp;{{user.last_name}}</a>
+        <a href="/logout" class="btn btn-outline-success my-2 my-sm-0">Log Out</a>
+      </div>
+    </div>
+  </nav>
+
+      
+  <section style="background-color: #ad655f;">
+    <div class="container py-3 h-100">
+      {% with messages = get_flashed_messages(category_filter=['create']) %}
+        {% if messages %}                          
+          {% for message in messages %}            
+            <div class="alert alert-warning" role="alert">
+              <p>{{message}}</p>  
+            </div>          
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+  
+      <div class="row d-flex justify-content-center align-items-center ">
+        <div class="col-md-80 col-lg-6 col-xl-10">
+          <div class="col-md-50 mb-5">
+
+        <form action="/posts/create/new" method="POST">
+
+
+            <div class="form-col">
+              
+              <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" name="title" id="title" placeholder="Title">
+              </div>
+            </div>
+
+            <div class="form-outline">
+              <label for="comment">comment</label>
+              <textarea class="form-control"  name="comment" id="comment" rows="8" placeholder="comment"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="location">Location</label>
+              <input type="text" class="form-control" name="location" id="location" placeholder="Location">
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="date" class="form-label">Date:</label>
+                <input type="date" name="date" id="date" class="form-control">
+              </div>
+              <!-- <div class="form-group col-md-4">
+                <label for="inputState">State</label>
+                <select id="inputState" class="form-control">
+                  <option selected>Choose...</option>
+                  <option>...</option>
+                </select>
+              </div> -->
+            </div>
+            
+
+            <button type="submit" class="btn btn-primary">Create</button>
+        </form>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/f2e32cf60e.js" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/f2e32cf60e.js" crossorigin="anonymous"></script>
+</body>
+</html>

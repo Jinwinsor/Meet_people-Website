@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mystyle.css') }}">
+    <link rel="stylesheet" href="https://kit.fontawesome.com/f2e32cf60e.css" crossorigin="anonymous">
+    <title>Meet You</title>
+</head>
+
+<body> 
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="padding: 20px;">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPD1eWpEX6hwD0luSjqnzp9TK-v_VqdwP8WQ&usqp=CAU" class="navbar-brand" width="60"
+        height="60" >Hello You!</img>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+            <a class="nav-link" href="/dashboard">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="#">MyMeets</a>
+            </li>
+            <li class="nav-item form-inline" style="margin-left: 200px;" >
+                <i class="fa-solid fa-earth-americas"></i>
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">MeetYou</a>
+            </li>
+        </ul>
+        <div class="form-inline my-2 my-lg-0">
+            <a class="nav-link disabled">{{user.first_name}}&nbsp;{{user.last_name}}</a>
+            <a href="/logout" class="btn btn-outline-success my-2 my-sm-0">Log Out</a>
+        </div>
+        </div>
+    </nav>
+    <section style="background-color: #ad655f;">
+
+        <div class="container my-5 py-5">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-12 col-lg-10">
+                    <div class="card text-dark">
+                        <div class="card-body p-4">
+                            <h4 class="mb-0">Recent comments</h4>
+                            <p class="fw-light mb-4 pb-2">Latest Comments section by users</p>
+        
+                            <hr class="my-0" />
+                        {% for post in posts %}
+                            {% if session['user_id'] == post.owner.id %}
+                            <div class="card-body p-4">
+                                <div class="d-flex">
+                                    <h5 class="fw-bold mb-1" style="margin-right:30px;">{{user.first_name}}</h5>
+                  
+                                    <div class="d-flex align-middle justify-content-end" style="margin-right:20px;">
+                                      <a href="/posts/view/{{post.id}}" data-mdb-toggle="tooltip" title="Done"><i
+                                        class="fas fa-check text-success me-3" style="margin-right:20px;">View</i></a>
+                  
+                                  
+                                      <a href="/posts/update/{{post.id}}">
+                                      <i class="fas fa-pencil-alt ms-2" style="margin-right:20px;">Edit</i></a>
+                                      <a href="/posts/delete/{{post.id}}">
+                                      <i class="fas fa-trash-alt text-success me-3">Delete</i></a>
+
+                                    </div>
+                  
+                                  </div>
+                  
+                                  <div class="d-flex align-items-center mb-3 ">
+                                    <p class="mb-0" style="margin-right:20px;">
+                                      {{post.date}}
+                                    </p>
+                                    <h4 class="mb-0 badge bg-warning" style="font-size: 100%;">{{ post.title }}</h4>
+                                    <a href="/posts/view/{{post.id}}" class="link-muted"></a>
+                                    <!-- <a href="#!" class="text-success">  -->
+                                      <!-- <i class="fas fa-redo-alt ms-2"></i></a> -->
+                                    <p class="link-danger" style="padding-top:20px; padding-left: 20px;">
+                                      <!-- <i class="fas fa-heart ms-2">{{likes}}Likes</i></p>  -->
+                                  </div>
+                                  <p class="mb-0">
+                                    {{ post.comment }}
+                                  </p>
+                                </div>
+                                {% endif %}
+                              {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+    </section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/f2e32cf60e.js" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/f2e32cf60e.js" crossorigin="anonymous"></script>
+</body>
+</html>

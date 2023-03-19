@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mystyle.css') }}">
+    <link rel="stylesheet" href="https://kit.fontawesome.com/f2e32cf60e.css" crossorigin="anonymous">
+    <title>Meet You</title>
+</head>
+
+<body> 
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="padding: 20px;">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPD1eWpEX6hwD0luSjqnzp9TK-v_VqdwP8WQ&usqp=CAU" class="navbar-brand" width="60"
+      height="60" >Hello You!</img>
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="/dashboard">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/posts/{{user.id}}/mymeet">MyMeets</a>
+        </li>
+        <li class="nav-item form-inline" style="margin-left: 200px;" >
+          <i class="fa-solid fa-earth-americas"></i>
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">MeetYou</a>
+        </li>
+      </ul>
+      <div class="form-inline my-2 my-lg-0">
+        <a class="nav-link disabled">{{user.first_name}}&nbsp;{{user.last_name}}</a>
+        <a href="/logout" class="btn btn-outline-success my-2 my-sm-0">Log Out</a>
+      </div>
+    </div>
+  </nav>
+
+  <section style="background-color: #ad655f;">
+    <!-- <div class="main-contariner"> -->
+
+        <div class="container" style="padding: 20px;">
+          <div class="col">
+              <div class="card-body py-2">
+                  <div class="card p-3 py-4">
+                      
+                      <!-- <div class="text-center">
+                          <img src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=800" width="120" class="rounded-circle">
+                      </div> -->
+                      
+                      <div class="text-center mt-3">
+                          <span class="bg-secondary p-1 px-4 rounded text-white" style="font-size: 30px;">{{post.title}}</span>
+                          <p class="mt-2 mb-0" >Posted by : {{post.owner.first_name}}</p>
+                          <span style="font-size: 30px;"></span>
+                          
+                          <div class="px-4 mt-1">
+                              <p class="fonts" style="font-size: 20px;">{{post.comment}}</p>
+                          </div>
+    
+                          <div class="px-4 mt-1 justify-content-center">
+                          <!-- # Can I make this location to go to the map where the writer pointed?  -->
+                            <a class="fonts" style="font-size: 20px;"><i class="fa-solid fa-location-dot">{{post.location}}</i></a>
+                            <a href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-map-location-dot fa-2xl" style="margin-left:20px;"></i></a>
+                          </div>
+                          
+                          <div class="row d-flex social-list justify-content-center" style="gap:20px; padding:20px;">
+                                <i class="fa fa-facebook"></i></li>
+                                <i class="fa fa-dribbble"></i></li>
+                                <i class="fa fa-instagram"></i></li>
+                                <i class="fa fa-linkedin"></i></li>
+                                <i class="fa fa-google"></i></li>
+                          </div>
+                          
+                          <div class="buttons">
+                            <form action="/posts/{{post.id}}/join" method="POST">
+                              <h5 class="">Participants : {{post.joins | length}} </h5>
+                            </form>
+                          </div>
+  
+                          <hr>
+  
+                          <div class="card-body" style="border: 2px solid black;">
+                            <!-- <h5 class="card-title text-left">Participants : {{post.joins|length}}</h5> -->
+                            <h5>Members who joined {{ post.title }}</h5>
+                            <ul>
+                              {% for user in joined_users %}
+                              <p>{{ user.first_name }} {{ user.last_name }}</p>
+                              {% endfor %}
+                            </ul>
+  
+                            <!-- <div class="row">
+                              <div class="col-12 text-center">
+                                <h5 class="card-text"></h5>
+                                {% if user.id == post.owner.user_id %}
+                                <div class="btn-group">
+                                  <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-bs-toggle="dropdown"></button> 
+                                </div>
+                                {% endif %} 
+                              </div>
+                            </div> -->
+                          </div> 
+  
+                        </div>
+  
+                      </div>
+    
+                  </div>
+              </div>
+          </div>
+        
+      <!-- </div> -->
+  </section>
+
+    
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+      <script src="https://kit.fontawesome.com/f2e32cf60e.js" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/f2e32cf60e.js" crossorigin="anonymous"></script>
+      <script type="/text/javascript" src="{{ url_for('static', filename='index.js')}}"></script>
+</body>
+</html>

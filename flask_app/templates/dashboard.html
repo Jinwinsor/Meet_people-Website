@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mystyle.css') }}">
+    <link rel="stylesheet" href="https://kit.fontawesome.com/f2e32cf60e.css" crossorigin="anonymous">
+    <title>Meet You</title>
+</head>
+
+<body> 
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="padding: 20px;">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPD1eWpEX6hwD0luSjqnzp9TK-v_VqdwP8WQ&usqp=CAU" class="navbar-brand" width="60"
+      height="60" >Hello You!</img>
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="/dashboard">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/posts/{{user.id}}/mymeet">MyMeets</a>
+        </li>
+        <li class="nav-item form-inline" style="margin-left: 200px;" >
+          <i class="fa-solid fa-earth-americas"></i>
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">MeetYou</a>
+        </li>
+      </ul>
+      <div class="form-inline my-2 my-lg-0">
+        <a class="nav-link disabled">{{user.first_name}}&nbsp;{{user.last_name}}</a>
+        <a href="/logout" class="btn btn-outline-success my-2 my-sm-0">Log Out</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- =======WEATHER SEARCH APP ============ -->
+
+  <section style="background-color: #ad655f;">
+    <div class="headline d-flex justify-content-center">
+      <h3 style="color: white; margin-top:20px;">
+        <i class="fa-solid fa-champagne-glasses">Meet new people near you.</i></h3>
+    </div>
+    <div class="container py-3 h-100" id="forecast_container"> 
+      <h4 class="display-6 font-weight-bold mb-4 d-flex justify-content-center" style="color:white;">🌤️ Search Weather</h4>
+      <div class="row d-flex justify-content-center align-items-center ">
+        <div class="card" id="card_weather">
+          <form action="/weather" method="post">
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city">
+            <button type="submit">Search</button>
+          </form>
+          
+        {% if weather_data and weather_data.error %}
+          <p>{{ weather_data.error }}</p>
+        {% elif weather_data %}
+
+          <div class="card" style="color: #4B515D; border-radius: 35px;">
+            <div class="card-body p-4">
+              <div class="d-flex flex-column text-center">
+                <h3 class="flex-grow-1 ">Weather in {{ weather_data.name }}, {{ weather_data.sys.country }}</h3>
+                <div class="d-flex flex-column text-center mt-5 mb-4">
+                  <h6>{{ weather_data.date}}</h6>
+                  <h6 class="display-4 mb-0 font-weight-bold" style="color: #1C2331;">{{ weather_data.main.temp }} °C</h6>
+                  <span class="small" style="color: #868B94">{{ weather_data.weather[0].description }}</span>
+                </div>
+              </div>
+
+              <div class="d-flex align-items-center">
+                <div class="flex-grow-1" style="font-size: 1rem;">
+                  <div><i class="fas fa-wind fa-fw" style="color: #868B94;"></i> <span class="ms-1"> {{ weather_data.wind.speed }}km/h
+                    </span></div>
+                  <div><i class="fas fa-tint fa-fw" style="color: #868B94;"></i> <span class="ms-1"> {{ weather_data.main.humidity }} % </span>
+                  </div> 
+                  <div><i class="fas fa-sun fa-fw" style="color: #868B94;"></i> <span class="ms-1"> feels like:{{weather_data.main.feels_like }} </span>
+                  </div>
+                </div>
+                <div class="icon">
+                  <img src="http://openweathermap.org/img/wn/{{ weather_data.weather[0].icon }}@2x.png" alt="{{ weather_data.weather[0].description }}" width="100px">
+                </div>
+
+              </div>
+            </div>
+          {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <hr>
+
+  <!-- # ======== DASHBAORD MAIN ============= -->
+    <div class="create_board d-flex justify-content-center">
+      <a href="/posts/create" type="button" class="btn btn-info btn-rounded">Create your new meet</a>
+    </div>
+
+    <div class="container my-5 py-5"> 
+      <div class="row content d-flex justify-content-center"> 
+        <div class="col-lg-8 col-md-12 col-lg-10">
+          <div class="card text-dark">
+            <div class="card-body p-4">
+            
+              <div class="row">
+                <h4 class="mb-0 justify-content-start" style="margin-left: 20px;">Recent comments</h4>
+              </div>
+          
+              <hr class="my-0" />
+
+      {% for post in posts %}
+
+              <div class="card-body p-4">
+                <div class="d-flex flex-start">
+                  <!-- <img class="rounded-circle shadow-1-strong me-3"
+                    src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(26).webp" alt="avatar" width="60"
+                    height="60" style="margin-right:30px;"/> -->
+                  <div class="comment_body">
+                    <div class="d-flex">
+                      <h5 class="fw-bold mb-1" style="margin-right:30px;">{{post.owner.first_name}}</h5>
+                      <div class="d-flex align-middle justify-content-end" style="margin-right:20px;">
+                        <a href="/posts/view/{{post.id}}" data-mdb-toggle="tooltip" title="Done"><i
+                            class="fas fa-check text-success me-3" style="margin-right:20px;"></i></a>
+  
+                      {% if session['user_id'] == post.owner.id %}
+                        <a href="/posts/update/{{post.id}}" class="link-muted"><i class="fas fa-pencil-alt ms-2" style="margin-right: 20px;"></i></a>
+                        <a href="/posts/delete/{{post.id}}" class="link-muted"><i class="fa-solid fa-x ms-2"></i></a>
+                      {% endif %}
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-center mb-3 " style="margin-top:-20px;">
+                      <p class="text-muted mb-0 mt-3" style="margin-right:20px;">
+                          {{post.date}}
+                      </p>
+                      <h4 class="mb-0 badge bg-warning mb-0 mt-3" style="font-size: 100%;">{{ post.location }}</h4>
+                      <a href="/posts/view/{{post.id}}" class="link-muted"></a>
+                        
+                      <div class="d-flex row mt-3" style="margin-left:20px; gap:20px;">
+                        <div class="row " style="margin-left:20px;">
+                        {% if user.id in post.joined_user_ids %}
+                          <form action="/unjoin" method="POST">
+                            <input type="hidden" name="post_id" value="{{ post.id }}">
+                            <i class="fa-solid fa-thumbs-down"> <input type="submit" value="Unjoin"></i>
+                          </form>
+                        {% else %}
+                          <form action="/join" method="POST">
+                            <input type="hidden" name="post_id" value="{{ post.id }}">
+                            <i class="fa-solid fa-thumbs-up"> <input type="submit" value="Join"></i>
+                          </form>
+                        {% endif %}
+                            <p class="link-danger like-count" style="margin-left: 20px;"><i class="fas fa-heart ms-2">{{ like_counts[post.id] }} members </i></p> 
+                        </div>
+                      </div>
+                    </div>
+                    <h4 style="margin-top:-20px;">{{post.title}}</h4>
+                    <p class="mb-0">
+                      {{ post.comment }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+                <hr class="my-0" />
+      {% endfor %}
+            </div>
+            <div class="col-12 text-right">
+              <a href="/posts/create" type="button" class="btn btn-info btn-rounded">Add Task</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/f2e32cf60e.js" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/f2e32cf60e.js" crossorigin="anonymous"></script>
+
+</body>
+</html>
