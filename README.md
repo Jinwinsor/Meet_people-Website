@@ -9,14 +9,6 @@
 | What I've used | | |
 | <img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white"> | <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white"> | <img src="https://img.shields.io/badge/flask-000000?style=for-the-badge&logo=flask&logoColor=white"> |
 
-<div style="text-align: center;">
-  <p>What I've used</p>
-  <img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white">
-  <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
-  <img src="https://img.shields.io/badge/flask-000000?style=for-the-badge&logo=flask&logoColor=white">
-</div>
-
-
 <p align="center"> Preview of my Solo Project </p>
 <p align="center">
   <img width="1421" alt="Screenshot 2023-05-24 at 1 15 13 AM" src="https://github.com/Jinwinsor/solo_project/assets/91623627/7dbcd876-6866-466e-a67c-20803a190c13">
