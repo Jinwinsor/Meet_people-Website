@@ -1,5 +1,7 @@
 # solo_project
 
+<img src="https://github-readme-stats.vercel.app/api/top-langs?username=Jinwinsor&show_icons=true&locale=en&layout=compact&theme=chartreuse-dark" alt="ovi" />
+
 ![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=Jinwinsor&show_icons=true&theme=radical)
 
 <hr/>
