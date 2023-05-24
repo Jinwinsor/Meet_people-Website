@@ -1,4 +1,4 @@
-# solo_project
+# Meeting Website
 
 <img src="https://github-readme-stats.vercel.app/api/top-langs?username=Jinwinsor&show_icons=true&locale=en&layout=compact&theme=chartreuse-dark" alt="ovi" />
 
