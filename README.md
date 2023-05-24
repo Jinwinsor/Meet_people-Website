@@ -2,6 +2,10 @@
 
 ![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=Jinwinsor&show_icons=true&theme=radical)
 
+<hr/>
+<p align="center">What I've used <p>
+ <p align="center"> API-weather, Flask, Python <p>
+
 
 <p align="center"> Preview of my Solo Project </p>
 
