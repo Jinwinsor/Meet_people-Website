@@ -84,7 +84,7 @@ def logout():
 def weather():
     if request.method == 'POST':
         city = request.form.get('city')
-        api_key = '09c145a4b2a12f4ce9704c8c1d164268'
+        api_key = 'MY_API_KEY'
         url = f'http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric'
         response = requests.get(url)
         weather_data = response.json()
