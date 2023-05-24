@@ -12,6 +12,7 @@
   <img src="https://img.shields.io/badge/flask-000000?style=for-the-badge&logo=flask&logoColor=white">
 </div>
 
+<hr/>
 
 <p align="center"> Preview of my Solo Project </p>
 <p align="center">
