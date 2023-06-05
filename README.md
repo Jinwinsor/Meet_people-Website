@@ -1,7 +1,6 @@
 # Meeting Website
 This is my first Flask Solo Project
 
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Jinwinsor&layout=compact)
 
 <img src="https://github-readme-stats.vercel.app/api/top-langs?username=Jinwinsor&show_icons=true&locale=en&layout=compact&theme=chartreuse-dark" alt="ovi" />
 
