@@ -1,9 +1,7 @@
 # Meeting Website
 This is my first Flask Solo Project
 
-<a href="[https://www.linkedin.com/in/jinhee-winsor-6260a619a/]">![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)</a>
-
-
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Jinwinsor&layout=compact)
 
 <img src="https://github-readme-stats.vercel.app/api/top-langs?username=Jinwinsor&show_icons=true&locale=en&layout=compact&theme=chartreuse-dark" alt="ovi" />
 
