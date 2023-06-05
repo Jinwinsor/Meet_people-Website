@@ -1,7 +1,7 @@
 # Meeting Website
 This is my first Flask Solo Project
 
-<a href="[<LinkedInURL>](https://www.linkedin.com/in/jinhee-winsor-6260a619a/)">![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)</a>
+<a href="[https://www.linkedin.com/in/jinhee-winsor-6260a619a/]">![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)</a>
 
 
 
