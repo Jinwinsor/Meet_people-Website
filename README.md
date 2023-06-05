@@ -1,7 +1,9 @@
 # Meeting Website
 This is my first Flask Solo Project
 
-<iframe width="600" height="600" src="https://ionicabizau.github.io/github-profile-languages/api.html?Jinwinsor" frameborder="0"></iframe>
+<a href="[<LinkedInURL>](https://www.linkedin.com/in/jinhee-winsor-6260a619a/)">![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)</a>
+
+
 
 <img src="https://github-readme-stats.vercel.app/api/top-langs?username=Jinwinsor&show_icons=true&locale=en&layout=compact&theme=chartreuse-dark" alt="ovi" />
 
